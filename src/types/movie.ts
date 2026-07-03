@@ -1,6 +1,14 @@
 export interface TrendingMoviesResponse {
     page: number;
-    results: unknown[];
+    results: Movie[];
     total_pages: number;
     total_results: number;
 }
+
+export interface Movie {
+    id: number;
+    title: string;
+    poster_path: string;
+    release_date: string;
+    vote_average: number;
+}   

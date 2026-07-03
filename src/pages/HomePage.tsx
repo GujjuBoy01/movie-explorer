@@ -1,3 +1,4 @@
+import { MovieGrid } from "../components/movie/MovieGrid";
 import { useTrendingMovies } from "../hooks/useTrendingMovies"
 
 export default function HomePage(){
@@ -14,5 +15,9 @@ export default function HomePage(){
 
     console.log(data)
 
-    return <h1>Home Page</h1>
+    return(
+        <div>
+            <MovieGrid movies={data?.results ?? []} />
+        </div>
+    )
 }
