@@ -1,4 +1,5 @@
 import type { Movie } from "../../types/movie";
+import { getPosterUrl } from "../../utils/image";
 
 interface MoviesCardProps{
     movie: Movie;
@@ -8,7 +9,7 @@ export function MovieCard({movie}:MoviesCardProps){
     return(
         <div className="rounded-lg overflow-hidden border shadow-sm">
             <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                src={getPosterUrl(movie.poster_path)}
                 alt={movie.title}
                 className="w-full h-80 object-cover"
             />

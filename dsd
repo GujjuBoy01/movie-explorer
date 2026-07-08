@@ -1,0 +1,17 @@
+[33mcommit 83640b81041ae5d6cbd6af69be735707718626f4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: GujjuBoy01 <mehulp3336@gmail.com>
+Date:   Fri Jul 3 15:20:03 2026 +0530
+
+    feat: display trending movies grid
+
+[33mcommit 41f5b573eef4922ad2bd5e3ee17d89c8414eac9f[m
+Author: GujjuBoy01 <mehulp3336@gmail.com>
+Date:   Fri Jul 3 11:59:51 2026 +0530
+
+    feat: integrate TMDB API with TanStack Query
+
+[33mcommit 7d9da4019685c11ea8f4be06d7571a6c4c245e2b[m
+Author: GujjuBoy01 <mehulp3336@gmail.com>
+Date:   Wed Jul 1 16:15:31 2026 +0530
+
+    chore: initialize movie explorer project

@@ -1,9 +1,10 @@
 import axios from "axios";
+import { ACCESS_TOKEN, API_PORTAL_URL } from "./config";
 
 export const api = axios.create({
-    baseURL: import.meta.env.VITE_TMDB_BASE_URL,
+    baseURL: API_PORTAL_URL,
     headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`
+        Authorization: `Bearer ${ACCESS_TOKEN}`
     },
 });

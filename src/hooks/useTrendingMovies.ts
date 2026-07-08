@@ -5,5 +5,8 @@ export const useTrendingMovies = () => {
     return useQuery({
         queryKey: ["trending-movies","week"],
         queryFn: () => getTrendingMovies("week"),
+        // staleTime: 0,
+        // gcTime: 0,
     });
 };
+
