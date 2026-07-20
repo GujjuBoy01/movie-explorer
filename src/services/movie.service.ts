@@ -1,5 +1,6 @@
 import { api } from "../lib/axios";
 import type { TrendingMoviesResponse } from "../types/movie";
+import type { MovieDetails } from "../types/movie-detail";
 
 export async function getTrendingMovies(
     period: "day" | "week" = "week"
@@ -23,5 +24,13 @@ export async function getSearchMovies(search: string) {
         }
     });
     
+    return response.data;
+}
+
+export async function getMovieDetails(
+    movieId: number
+):Promise<MovieDetails>{
+    const response = await api.get<MovieDetails>(`/movie/${movieId}`);
+
     return response.data;
 }

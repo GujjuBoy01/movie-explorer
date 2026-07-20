@@ -5,7 +5,9 @@ import { useTrendingMovies } from "../hooks/useTrendingMovies"
 import SearchBar from "../components/movie/SearchBar";
 import { useSearchMovies } from "../hooks/useSearchMovies";
 import { useDebounce } from "../hooks/useDebounce";
-import EmptyState from "../components/common/EmptyState";
+import EmptyState from "../components/ui/EmptyState";
+import { SearchSkeleton } from "../components/movie/SearchSkeleton";
+import ErrorState from "../components/ui/ErrorState";
 
 export default function HomePage(){
 
@@ -50,23 +52,26 @@ export default function HomePage(){
     //     return <h1>Something went wrong!!</h1>;
     // }
 
-    // console.log(trendingQuery?.data)
+    console.log(trendingQuery?.data)
 
-    console.log("search query:",searchQuery);
+    // console.log("search query:",searchQuery);
 
     const renderSearchContent = () => {
         if(showSearchSkeleton){
-           return (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    {Array.from({ length: 20}).map((_, index) => (
-                        <MovieCardSkeleton key={index}/>
-                    ))}
-                </div> 
-           ) 
+           return <SearchSkeleton />
         }
 
         if(searchQuery.error){
-            return <h1>Something went wrong!!</h1>;
+            return(
+                <div className="bg-slate-900 min-h-[83vh] flex justify-center items-center">
+                    <ErrorState 
+                        title="Oops..We couldn't load the movies"
+                        description="Please try again"
+                        onRetry={() => searchQuery.refetch()}
+                    />
+                </div>
+            )
+            // return <h1>Something went wrong!!</h1>;
         }
         
         if(movies.length === 0){
@@ -94,17 +99,39 @@ export default function HomePage(){
         }
 
         if(trendingQuery.error){
-            return <h1>Something went wrong!!</h1>;
+            return (
+                <div className="min-h-[83vh] flex justify-center items-center">
+                    <ErrorState 
+                        title="Oops..We couldn't load the movies"
+                        description="Please try again"
+                        onRetry={() => trendingQuery.refetch()}
+                    />
+                </div>
+            )
+            // return <h1>Something went wrong!!</h1>;
         }
 
         return <MovieGrid movies={movies}/>;
     }   
 
     return(
-        <div>
+        <div className="mt-3">
             <SearchBar onChange={setSearch} value={search} />
-            <p>Searching for: {search}</p>
+            <p className="py-2">Searching for: {search}</p>
 
+            {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    {Array.from({ length: 20}).map((_, index) => (
+                        <MovieCardSkeleton key={index}/>
+                    ))}
+                </div> */}
+            {/* <div className="min-h-[83vh] flex justify-center items-center">
+                <ErrorState 
+                    title="Oops..We couldn't load the movies"
+                    description="Please try again"
+                    onRetry={() => trendingQuery.refetch()}
+                />
+            </div> */}
+            
             {isSearching
                 ? renderSearchContent()
                 : renderTrendingContent()

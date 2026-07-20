@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 * {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   box-sizing: border-box;
 }
 
@@ -10,6 +10,105 @@ body {
   font-family: sans-serif;
 }
 
+
+/* Winter / Ice Skeleton Loader */
+
+@keyframes ice-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes ice-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-12deg);
+  }
+}
+
+/* Base block: icy navy gradient with a slow breathing pulse.
+   This is what makes it read as "loading" even between sweeps. */
+.ice-block {
+  background: linear-gradient(160deg, #254468, #152a44);
+  animation: ice-breathe 2.4s ease-in-out infinite;
+}
+
+/* Wrapper: adds a single frost-sweep overlay across the whole card,
+   so you only ever write ONE class on the parent — no per-section CSS. */
+.ice-skeleton {
+  position: relative;
+}
+
+.ice-skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(224, 242, 254, 0.05) 20%,
+    rgba(224, 242, 254, 0.35) 50%,
+    rgba(224, 242, 254, 0.05) 80%,
+    transparent
+  );
+  animation: ice-sweep 2.2s ease-in-out infinite;
+}
+
+
+/* Shimmer Animation */
+
+/* @keyframes shimmer {
+  from { */
+    /* transform: translateX(-100%); */
+    /* transform: translateX(0) skewX(0deg);
+
+  }
+  to { */
+    /* transform: translateX(100%); */
+    /* transform: translateX(350%) skewX(0deg);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::before {
+  content: "";
+  position: absolute; */
+  /* inset: 0; */
+
+  /* top: 0;
+  left: -40%;
+
+  width: 40%;
+  height: 100%; */
+
+  /* transform: translateX(-100%); */
+  /* transform: skewX(-20deg);
+  animation: shimmer 1.8s linear infinite;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(240, 249, 255, 0.30), */
+    /* rgba(255, 255, 255, 0.25), */
+    /* rgba(186, 230, 253, 0.35), */
+    /* rgba(186, 230, 253, 0.8), */
+    /* transparent
+  );
+} */
 
 /* :root {
   --text: #6b6375;
